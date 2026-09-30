@@ -1,0 +1,67 @@
+# Compilados
+*.o
+*.obj
+*.exe
+*.out
+*.dll
+*.so
+*.a
+*.lib
+*.pdb
+*.ilk
+*.idb
+*.exp
+*.pch
+*.ipch
+
+# Carpetas de build
+build/
+out/
+bin/
+obj/
+Debug/
+Release/
+x64/
+x86/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.sdf
+*.VC.db
+*.VC.opendb
+ipch/
+*.tlog
+*.log
+
+# IDEs
+.idea/
+.vscode/
+
+# Sistema
+Thumbs.db
+desktop.ini
+
+# Librerias externas necesarias para compilar y ejecutar: SI se suben
+!0. C++ Code/**/*.lib
+!0. C++ Code/**/*.a
+!0. C++ Code/**/*.dll
+!2. Platforms/0. Windows Desktop/extlibs/**/x64/
+!2. Platforms/0. Windows Desktop/extlibs/**/x86/
+!2. Platforms/0. Windows Desktop/extlibs/**/*.lib
+!2. Platforms/0. Windows Desktop/extlibs/**/*.dll
+!2. Platforms/0. Windows Desktop/Program/*.dll
+
+# Archivos generados en la carpeta de salida (se copian al compilar)
+2. Platforms/0. Windows Desktop/Program/data/
+2. Platforms/0. Windows Desktop/Program/*.wav
+*.recipe
+
+# Comprimidos
+*.zip
+*.rar
+*.7z
