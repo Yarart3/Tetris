@@ -26,7 +26,7 @@ void Tetris::juga(Screen& pantalla, int mode)
         pantalla.processEvents();
 
         if (Keyboard_GetKeyTrg(KEYBOARD_ESCAPE)) {
-            exitGame = true; // Volvemos al menú
+            exitGame = true; // Volvemos al menÃº
             isPaused = true; // Pausamos el juego
         }
 
@@ -42,12 +42,11 @@ void Tetris::juga(Screen& pantalla, int mode)
             if (!m_partida.gameOver())
             {
                 m_partida.actualitza(mode, deltaTime);
+                pantalla.update();
             }
             else {
                 exitGame = true;
             }
-
-            pantalla.update();
         }
         else {
             SDL_Delay(100);
@@ -58,7 +57,7 @@ void Tetris::juga(Screen& pantalla, int mode)
         record();
     }
 
-    // Detenemos la música, pero no cerramos la pantalla ni el renderizador para mantener el estado
+    // Detenemos la mÃºsica, pero no cerramos la pantalla ni el renderizador para mantener el estado
     PlaySound(NULL, 0, 0);
 }
 
@@ -113,11 +112,11 @@ bool Tetris::Menu(Screen& pantalla)
             break;
 
         default:
-            cout << "Opció no vàlida!" << endl;
+            cout << "OpciÃ³ no vÃ lida!" << endl;
             break;
         }
 
-        // Pausa y limpia la pantalla después de cada opción
+        // Pausa y limpia la pantalla despuÃ©s de cada opciÃ³n
         if (!exitApp) {
             cout << "Prem una tecla per continuar...";
             system("pause>nul");
