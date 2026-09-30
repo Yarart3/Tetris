@@ -33,6 +33,7 @@
 
 #include "./Partida.h"
 #include "./InfoJoc.h"
+#include "Audio.h"
 
 
 int main(int argc, const char* argv[]) {
@@ -42,9 +43,11 @@ int main(int argc, const char* argv[]) {
     
     Tetris tetris;
     Screen pantalla(SCREEN_SIZE_X, SCREEN_SIZE_Y);
+    SDL_SetWindowTitle(g_Video.window, "Tetris");
 
     bool exitApp = false;
     
+    Audio::init("./data/Games/config.txt");
     tetris.llegirPuntuacions("./data/Games/puntuacions.txt");
 
 
@@ -53,6 +56,7 @@ int main(int argc, const char* argv[]) {
         
     } while (!exitApp);
 
+    Audio::shutdown();
     SDL_Quit();
     
     return 0;

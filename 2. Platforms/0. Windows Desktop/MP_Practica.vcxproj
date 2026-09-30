@@ -103,6 +103,8 @@
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
       <AdditionalDependencies>libpng16.lib;SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
@@ -120,6 +122,8 @@ xcopy "$(ProjectDir)..\..\1. Resources\*.wav" "$(OutDir)." /Y /Q</Command>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
       <AdditionalDependencies>SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;libpng16.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
@@ -139,6 +143,8 @@ xcopy "$(ProjectDir)..\..\1. Resources\*.wav" "$(OutDir)." /Y /Q</Command>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>libpng16.lib;SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -160,6 +166,8 @@ xcopy "$(ProjectDir)..\..\1. Resources\*.wav" "$(OutDir)." /Y /Q</Command>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;libpng16.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -181,6 +189,7 @@ xcopy "$(ProjectDir)..\..\1. Resources\*.wav" "$(OutDir)." /Y /Q</Command>
     <ClCompile Include="..\..\0. C++ Code\Graphic Lib\sprites.cpp" />
     <ClCompile Include="..\..\0. C++ Code\Graphic Lib\stb_vorbis.cpp" />
     <ClCompile Include="..\..\0. C++ Code\Graphic Lib\video.cpp" />
+    <ClCompile Include="..\..\0. C++ Code\Logic Game\Audio.cpp" />
     <ClCompile Include="..\..\0. C++ Code\Logic Game\Figura.cpp" />
     <ClCompile Include="..\..\0. C++ Code\Logic Game\Joc.cpp" />
     <ClCompile Include="..\..\0. C++ Code\Logic Game\CuaFigura.cpp" />
@@ -206,6 +215,7 @@ xcopy "$(ProjectDir)..\..\1. Resources\*.wav" "$(OutDir)." /Y /Q</Command>
     <ClInclude Include="..\..\0. C++ Code\Graphic Lib\sprites.h" />
     <ClInclude Include="..\..\0. C++ Code\Graphic Lib\stb_vorbis.h" />
     <ClInclude Include="..\..\0. C++ Code\Graphic Lib\video.h" />
+    <ClInclude Include="..\..\0. C++ Code\Logic Game\Audio.h" />
     <ClInclude Include="..\..\0. C++ Code\Logic Game\Figura.h" />
     <ClInclude Include="..\..\0. C++ Code\Logic Game\Joc.h" />
     <ClInclude Include="..\..\0. C++ Code\Logic Game\CuaFigura.h" />

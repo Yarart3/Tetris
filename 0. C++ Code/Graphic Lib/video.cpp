@@ -163,6 +163,8 @@ void Screen::processEventSystem()
 //        }
     }
     else if(e.type ==  SDL_KEYUP)    Keyboard_ProcessKeyUp(SDL_GetScancodeFromKey(e.key.keysym.sym)) ;
+    // Text escrit (respecta majuscules, accents i la distribucio del teclat)
+    else if(e.type == SDL_TEXTINPUT) Keyboard_ProcessText(e.text.text) ;
       
     // Mouse events
 

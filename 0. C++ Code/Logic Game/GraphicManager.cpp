@@ -64,6 +64,47 @@ NFont::Rectf GraphicManager::drawFont (FONT_NAME name,
     return NFont::Rectf();
 }
 
+NFont::Rectf GraphicManager::drawFontCentered(FONT_NAME name,
+                                              float centerX, float posY,
+                                              float size,
+                                              const string& msg)
+{
+    NFont* font = getFont(name);
+    if (font == NULL)
+    {
+        cout << "Error: no existeix el identificador de font";
+        return NFont::Rectf();
+    }
+
+    float amplada = font->getWidth("%s", msg.c_str()) * size;
+    return font->draw(centerX - amplada / 2, posY, NFont::Scale(size), "%s", msg.c_str());
+}
+
+void GraphicManager::drawRect(int posX, int posY, int width, int height,
+                              int r, int g, int b, int alpha)
+{
+    SDL_Rect rect = { posX, posY, width, height };
+
+    SDL_SetRenderDrawBlendMode(g_Video.renderer, alpha < 255 ? SDL_BLENDMODE_BLEND : SDL_BLENDMODE_NONE);
+    SDL_SetRenderDrawColor(g_Video.renderer, (Uint8)r, (Uint8)g, (Uint8)b, (Uint8)alpha);
+    SDL_RenderFillRect(g_Video.renderer, &rect);
+    SDL_SetRenderDrawBlendMode(g_Video.renderer, SDL_BLENDMODE_NONE);
+}
+
+NFont* GraphicManager::getFont(FONT_NAME name)
+{
+    switch (name) {
+        case FONT_GREEN_30:
+            return &m_oFontGreen_30;
+        case FONT_RED_30:
+            return &m_oFontRed_30;
+        case FONT_WHITE_30:
+            return &m_oFontWhite_30;
+        default:
+            return NULL;
+    }
+}
+
 string GraphicManager::getImagePath(IMAGE_NAME name){
     string path;
     switch (name) {

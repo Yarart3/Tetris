@@ -58,6 +58,9 @@
     <ClCompile Include="..\..\0. C++ Code\Logic Game\CuaMoviment.cpp">
       <Filter>Logic Game\Source files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\0. C++ Code\Logic Game\Audio.cpp">
+      <Filter>Logic Game\Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\0. C++ Code\Graphic Lib\debug.h">
@@ -127,6 +130,9 @@
       <Filter>Logic Game\Header files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\0. C++ Code\Logic Game\CuaMoviment.h">
+      <Filter>Logic Game\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\0. C++ Code\Logic Game\Audio.h">
       <Filter>Logic Game\Header files</Filter>
     </ClInclude>
   </ItemGroup>

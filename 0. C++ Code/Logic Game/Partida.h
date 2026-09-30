@@ -15,6 +15,7 @@ public:
     Partida();
 
     void actualitza(int mode, double deltaTime);
+    void dibuixa(); // Tauler, figura i marcador, sense avancar el joc
     void inicialitza(int mode, const string& fitxerInicial, const string& fitxerFigures, const string& fitxerMoviments); //int mode, const string& fitxerInicial, const string& fitxerFigures, const string& fitxerMoviments
     void puntuacio(int eliminades);
     void dificultat();

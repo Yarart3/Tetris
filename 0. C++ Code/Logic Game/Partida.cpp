@@ -5,6 +5,7 @@
 #include <fstream>
 #include <time.h>
 #include <cstdlib>
+#include "Audio.h"
 
 #include <windows.h>
 #include <Windows.h>
@@ -135,6 +136,15 @@ void Partida::dificultat()
     }
 }
 
+void Partida::dibuixa()
+{
+    m_joc.dibuixaJoc();
+
+    //Puntuacio i nivell
+    string msg = "Puntuacio: " + to_string(m_punts) + ",            Nivell: " + to_string(m_nivell);
+    GraphicManager::getInstance()->drawFont(FONT_WHITE_30, POS_X_TAULER, POS_Y_TAULER - 50, 0.85, msg);
+}
+
 void Partida::actualitza(int mode, double deltaTime)
 {
 
@@ -143,8 +153,8 @@ void Partida::actualitza(int mode, double deltaTime)
     //GraphicManager::getInstance()->drawSprite(GRAFIC_TAULER, POS_X_TAULER, POS_Y_TAULER, false);
     
     int eliminades;
-  
-    m_joc.dibuixaJoc();
+
+    dibuixa();
 
     m_temps += deltaTime;
     m_tempsTest += deltaTime;
@@ -219,15 +229,10 @@ void Partida::actualitza(int mode, double deltaTime)
         }
     }
 
-    
-    //Puntuacio i nivell
-    string msg = "Puntuacio: " + to_string(m_punts) + ",            Nivell: " + to_string(m_nivell);
-    GraphicManager::getInstance()->drawFont(FONT_WHITE_30, POS_X_TAULER, POS_Y_TAULER - 50, 0.85, msg);
-    
     //Finalitzar el joc
     if (m_joc.finalitzarTetris() || m_joc.getFinalitzat())
     {
-        PlaySound(TEXT("gameover.wav"), NULL, SND_FILENAME | SND_ASYNC);
+        Audio::playGameOver();
         m_gameOver = true;
         GraphicManager::getInstance()->drawSprite(GRAFIC_FONS, 0, 0, false);
         string msg = "GAME OVER";

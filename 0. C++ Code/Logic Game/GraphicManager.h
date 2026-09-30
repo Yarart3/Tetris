@@ -50,7 +50,13 @@ public:
     NFont::Rectf drawFont(FONT_NAME name, float posX,
         float posY, float size,
         const string& msg);
-
+    //Dibuixa el text centrat horitzontalment respecte centerX
+    NFont::Rectf drawFontCentered(FONT_NAME name, float centerX,
+        float posY, float size,
+        const string& msg);
+    //Rectangle ple; alpha < 255 el fa semitransparent
+    void drawRect(int posX, int posY, int width, int height,
+        int r, int g, int b, int alpha);
 
     static GraphicManager* getInstance()
     {
@@ -77,6 +83,7 @@ private:
 private:
     string getImagePath(IMAGE_NAME);
     string getFontPath(FONT_NAME);
+    NFont* getFont(FONT_NAME);
 };
 
 
