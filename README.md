@@ -14,7 +14,9 @@ The project focuses on object-oriented design and manual memory management: the 
 - Soft drop and hard drop.
 - 10 difficulty levels: the fall speed increases every 1,000 points.
 - Score system based on cleared lines, placed pieces and hard drops.
-- Pause and resume during a game.
+- Pause and resume during a game; the music pauses too.
+- In-game volume panel with mute. The volume is saved between sessions.
+- Everything runs inside the game window: main menu, controls and scores screens, and name entry after a game over.
 - **Test mode**: loads an initial board, a fixed sequence of pieces and a list of moves from text files and plays them automatically, making the game logic reproducible and easy to verify.
 - High score table saved to disk and sorted on load.
 - Original chiptune rendition of *Korobeiniki* (public domain) as background music, and a game over sound.
@@ -25,7 +27,7 @@ The project focuses on object-oriented design and manual memory management: the 
 | --- | --- |
 | Language | C++ |
 | Graphics and input | SDL2, SDL2_image, SDL2_ttf, libpng |
-| Audio | WinMM (`PlaySound`) |
+| Audio | WinMM (MCI, with `PlaySound` as fallback) |
 | IDE / build | Visual Studio 2019 or later (uses the installed default toolset), x86  |
 | Platform | Windows |
 
@@ -42,12 +44,13 @@ main
            └── CuaMoviment       linked-list queue of moves (test mode)
 ```
 
-- **Tetris**: runs the main menu, the frame loop with delta time (`SDL_GetPerformanceCounter`), pause handling and the high score list (`std::list` kept in descending order).
+- **Tetris**: runs the in-window menu, the frame loop with delta time (`SDL_GetPerformanceCounter`), pause and volume panel handling, the game over name entry and the high score list (`std::list` kept in descending order).
 - **Partida**: updates the match every frame, applies the fall timer for the current level, reads keyboard input in normal mode or consumes the move queue in test mode, and computes the score.
 - **Joc**: applies the rules of the game and coordinates the board with the active piece.
 - **Tauler**: stores the board as a color matrix, validates moves and rotations, detects full rows and removes them. Overloads `<<` and `>>` to read and write the board from files.
 - **Figura**: stores each piece as a 4x4 matrix and rotates it through matrix transposition plus row or column reversal.
-- **GraphicManager**: singleton that loads and draws sprites and fonts.
+- **GraphicManager**: singleton that loads and draws sprites, fonts (including centered text) and filled rectangles.
+- **Audio**: static class that plays the music and the game over sound through MCI, which allows pausing, resuming and changing the volume. The volume and mute state are saved to `data/Games/config.txt`.
 
 ## Game Modes
 
@@ -63,6 +66,17 @@ main
 
 ## Controls
 
+**Menu**
+
+| Key | Action |
+| --- | --- |
+| ↑ / ↓ or W / S | Select option |
+| Enter / Space | Confirm |
+| 1–6 | Choose an option directly |
+| Esc | Back to the menu from a sub-screen; in the main menu, jump to *Exit* |
+
+**In game**
+
 | Key | Action |
 | --- | --- |
 | ← / A | Move left |
@@ -71,8 +85,28 @@ main
 | ↓ / S | Rotate counterclockwise |
 | C | Soft drop |
 | Space | Hard drop |
-| P | Pause / resume |
+| P | Pause / resume (also pauses the music) |
 | Esc | Back to menu |
+
+**Volume** (in the menu and in game)
+
+| Key | Action |
+| --- | --- |
+| V | Open / close the volume panel (pauses the game while open) |
+| + / − | Volume up / down by 5% |
+| ↑ / → and ↓ / ← | Volume up and down while the panel is open |
+| M | Mute / unmute |
+
+Pressing + / − or M without opening the panel shows it for two seconds without pausing the game.
+
+**Game over**
+
+| Key | Action |
+| --- | --- |
+| Letters, digits, `_`, `-` | Type your name (up to 12 characters; spaces become `_`) |
+| Backspace | Delete the last character |
+| Enter | Save the score |
+| Esc | Skip without saving |
 
 ## Scoring
 
@@ -94,7 +128,7 @@ main
 1. Resources/
    data/Graphics/    board, background and block sprites
    data/Fonts/       FreeSans font
-   data/Games/       test mode files and high scores
+   data/Games/       test mode files and high scores (config.txt with the volume is created at runtime)
    music.wav         background music
    gameover.wav      game over sound
 2. Platforms/
@@ -110,7 +144,7 @@ docs/
 3. Select the platform and configuration (the SDL2 and libpng libraries are included in `extlibs/` and `Program/`).
 4. Build the solution. The executable is generated in `Program/`, and a post-build step copies `data/` and the sound files next to it.
 5. Run it with **F5** from Visual Studio or by opening `Program/MP_Practica.exe`.
-6. Choose an option from the console menu. The game window opens when a match starts.
+6. The menu opens in the game window; no console is needed.
 
 ## Credits
 
