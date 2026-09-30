@@ -56,7 +56,7 @@ void Screen::processEvents()
 {
   // Borramos el buffer de vídeo antes de hacer la espera porque así aprovechamos mejor
   // el tiempo en vez de esperar para luego ponernos a borrar cuando nos toca procesar
-  clearBackBuffer(255, 255, 0) ;
+  clearBackBuffer(0, 0, 0) ;
 
   //Procesamos teclado y mouse
   Keyboard_Tick() ;
