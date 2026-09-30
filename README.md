@@ -26,7 +26,7 @@ The project focuses on object-oriented design and manual memory management: the 
 | Language | C++ |
 | Graphics and input | SDL2, SDL2_image, SDL2_ttf, libpng |
 | Audio | WinMM (`PlaySound`) |
-| IDE / build | Visual Studio 2019 or later (uses the installed default toolset), x86 and x64 |
+| IDE / build | Visual Studio 2019 or later (uses the installed default toolset), x86  |
 | Platform | Windows |
 
 ## Architecture
